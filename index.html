@@ -13,13 +13,13 @@
 
 <div ng-controller="CardsController">
 
-    <span ng-repeat="card in cards track by $index">
-        <img ng-src="assets/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150" ng-click="turnCard(card)">
-    </span>
+    <a href="#" ng-repeat="card in cards track by $index" ng-click="turnCard(card, $event)">
+        <img ng-src="assets/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150">
+    </a>
     <hr>
-    <p>
-        <button ng-click="resetGame()">{{actionButton}}</button>
-    </p>
+    <p>Jogadas: {{games}}</p>
+    <p><button ng-click="resetGame()">Reiniciar</button></p>
+
     <span ng-repeat="card in cards" ng-hide="true">
         <img ng-src="assets/cards/pokemons/{{card.image}}" alt="Bulbasaur" width="150">
     </span>
