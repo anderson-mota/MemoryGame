@@ -17,9 +17,13 @@
         <img ng-src="assets/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150" ng-click="turnCard(card)">
     </span>
     <hr>
+    <p>
+        <button ng-click="resetGame()">{{actionButton}}</button>
+    </p>
     <span ng-repeat="card in cards" ng-hide="true">
         <img ng-src="assets/cards/pokemons/{{card.image}}" alt="Bulbasaur" width="150">
     </span>
+
 </div>
 
 <script src="node_modules/lodash/lodash.js"></script>
