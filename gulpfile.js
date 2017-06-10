@@ -33,5 +33,5 @@ gulp.task('compass', function () {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch(source+"sass/**/*.scss", ['compass']);
-    gulp.watch([source+"**/*.css", "index.html"]).on('change', livereload.changed);
+    gulp.watch([source+"**/*.css", source+"**/*.js", "index.html"]).on('change', livereload.changed);
 });

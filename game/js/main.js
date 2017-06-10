@@ -3,10 +3,11 @@ angular.module('memoryGame', [])
         var cards = ['bulbasaur.png', 'butterfree.png', 'quirtle.png', 'charmander.png', 'eevee.png', 'haunter.png',
             'horsea.png', 'meowth.png', 'nidorina.png', 'pidgey.png', 'pikachu.png', 'sandshrew.png', 'tauros.png',
             'togepi.png', 'vulpix.png', 'lugia.png'];
-        var concludedCards = [];
+        $scope.concludedCards = [];
         $scope.TurnedCards = [];
         $scope.cards = [];
         $scope.attempts = 0;
+        $scope.failedAttempts = 0;
 
         $scope.resetGame = function() {
             $scope.cards = _.flatMap(cards, function(cardImage, index) {
@@ -43,10 +44,10 @@ angular.module('memoryGame', [])
 
             turnedCard.hit = $card.hit = true;
             $scope.TurnedCards = [];
-            concludedCards.push($card.id);
+            $scope.concludedCards.push($card.id);
 
-            if (concludedCards.length == cards.length) {
-
+            if ($scope.concludedCards.length == cards.length) {
+                $scope.concludedCards = [];
                 $window.alert($interpolate("Parabêns você ganhou em {{attempts}} jogadas!")($scope));
                 $scope.resetGame();
             }
@@ -56,6 +57,7 @@ angular.module('memoryGame', [])
 
         $scope.turnCard = function($card, event) {
             event.preventDefault();
+            var attemptHit = false;
 
             if ($card.hit || $card.show) {
                 return;
@@ -63,6 +65,7 @@ angular.module('memoryGame', [])
 
             if ($scope.TurnedCards.length >= 2) {
                 $scope.turnDown();
+                attemptHit = true;
             }
 
             $card.show = !$card.show;
@@ -72,8 +75,10 @@ angular.module('memoryGame', [])
                 return;
             }
 
-            if ($card.show) {
-                $scope.TurnedCards.push($card);
+            if (attemptHit) {
+                $scope.failedAttempts++;
             }
+
+            $scope.TurnedCards.push($card);
         };
     });

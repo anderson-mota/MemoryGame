@@ -1,0 +1,15 @@
+a.mg-card {
+    border: 2px solid color("grey", "darken-3");
+    display: inline-block;
+    margin: 2px;
+    overflow: hidden;
+    @include border-radius(8px);
+
+    &.mg-card-hit {
+        opacity: 0.4;
+    }
+
+    img {
+        display: block;
+    }
+}

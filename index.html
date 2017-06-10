@@ -13,15 +13,23 @@
 <body>
 
 <div ng-controller="CardsController" ng-init="resetGame()" class="container center">
-    <a href="#" class="gm-card" ng-repeat="card in cards track by $index" ng-click="turnCard(card, $event)">
+    <a href="#" class="mg-card z-depth-3"
+       ng-repeat="card in cards track by $index"
+       ng-class="{'mg-card-hit': card.hit}"
+       ng-click="turnCard(card, $event)">
         <img ng-src="game/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="120">
     </a>
 
-    <p>Jogadas: {{attempts}}</p>
-    <p><button class="btn red darken-2" ng-click="resetGame()">Reiniciar</button></p>
+    <ul>
+        <li>Jogadas: {{attempts}}</li>
+        <li>Acertos: {{concludedCards.length}}</li>
+        <li>Erros: {{failedAttempts}}</li>
+    </ul>
+
+    <p><button class="btn red" ng-click="resetGame()">Reiniciar</button></p>
 
     <span ng-repeat="card in cards" ng-hide="true">
-        <img ng-src="game/cards/pokemons/{{card.image}}" alt="{{card.image}}" width="150">
+        <img ng-src="game/cards/pokemons/{{card.image}}" alt="{{card.image}}" width="120">
     </span>
 
 </div>

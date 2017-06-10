@@ -1,15 +1,4 @@
 @import "compass";
 @import "../../node_modules/materialize-css/sass/materialize";
-
-a.gm-card {
-    border: 2px solid black;
-    display: inline-block;
-    margin: 2px;
-    overflow: hidden;
-    @include border-radius(8px);
-
-    img {
-        padding: 0;
-        display: block;
-    }
-}
+@import "config";
+@import "game";
