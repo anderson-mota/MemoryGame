@@ -12,5 +12,15 @@
     "angular": "^1.6.4",
     "lodash": "^4.17.4",
     "materialize-css": "^0.98.2"
+  },
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
+    "jasmine-core": "^2.6.3",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0"
   }
 }

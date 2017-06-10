@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="memoryApp">
+<html lang="en" ng-app="memoryGame">
 <head>
     <meta charset="UTF-8">
     <title>Jogo da memoria</title>
@@ -7,27 +7,27 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="game/favicon.png" sizes="64x64">
 </head>
 <body>
 
-<div ng-controller="CardsController">
+<div ng-controller="CardsController" ng-init="resetGame()">
 
     <a href="#" ng-repeat="card in cards track by $index" ng-click="turnCard(card, $event)">
-        <img ng-src="assets/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150">
+        <img ng-src="game/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150">
     </a>
     <hr>
-    <p>Jogadas: {{games}}</p>
+    <p>Jogadas: {{attempts}}</p>
     <p><button ng-click="resetGame()">Reiniciar</button></p>
 
     <span ng-repeat="card in cards" ng-hide="true">
-        <img ng-src="assets/cards/pokemons/{{card.image}}" alt="Bulbasaur" width="150">
+        <img ng-src="game/cards/pokemons/{{card.image}}" alt="Bulbasaur" width="150">
     </span>
 
 </div>
 
 <script src="node_modules/lodash/lodash.js"></script>
 <script src="node_modules/angular/angular.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="game/js/main.js"></script>
 </body>
 </html>

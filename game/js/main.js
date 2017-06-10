@@ -1,12 +1,12 @@
-angular.module('memoryApp', [])
-    .controller('CardsController', function($scope) {
+angular.module('memoryGame', [])
+    .controller('CardsController', function($scope, $interpolate, $window) {
         var cards = ['bulbasaur.png', 'butterfree.png', 'quirtle.png', 'charmander.png', 'eevee.png', 'haunter.png',
             'horsea.png', 'meowth.png', 'nidorina.png', 'pidgey.png', 'pikachu.png', 'sandshrew.png', 'tauros.png',
             'togepi.png', 'vulpix.png', 'lugia.png'];
         var concludedCards = [];
         $scope.TurnedCards = [];
         $scope.cards = [];
-        $scope.games = 0;
+        $scope.attempts = 0;
 
         $scope.resetGame = function() {
             $scope.cards = _.flatMap(cards, function(cardImage, index) {
@@ -16,7 +16,7 @@ angular.module('memoryApp', [])
             });
 
             $scope.shuffleCards();
-            $scope.games = 0;
+            $scope.attempts = 0;
         };
 
         $scope.shuffleCards = function() {
@@ -46,7 +46,8 @@ angular.module('memoryApp', [])
             concludedCards.push($card.id);
 
             if (concludedCards.length == cards.length) {
-                alert("Parabêns você ganhou!");
+
+                $window.alert($interpolate("Parabêns você ganhou em {{attempts}} jogadas!")($scope));
                 $scope.resetGame();
             }
 
@@ -65,7 +66,7 @@ angular.module('memoryApp', [])
             }
 
             $card.show = !$card.show;
-            $scope.games++;
+            $scope.attempts++;
 
             if ($scope.compareCards($card)) {
                 return;
@@ -75,6 +76,4 @@ angular.module('memoryApp', [])
                 $scope.TurnedCards.push($card);
             }
         };
-
-        $scope.resetGame();
     });
