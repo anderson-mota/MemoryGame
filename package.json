@@ -1,0 +1,16 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anderson Mota <anderson.mota12@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "lodash": "^4.17.4",
+    "materialize-css": "^0.98.2"
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="memoryApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo da memoria</title>
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+<div ng-controller="CardsController">
+
+    <span ng-repeat="card in cards track by $index">
+        <img ng-src="assets/cards/pokemons/{{card.show ? card.image : '_pokebola.jpg'}}" alt="Pokebola" width="150" ng-click="turnCard(card)">
+    </span>
+    <hr>
+    <span ng-repeat="card in cards">
+        <img ng-src="assets/cards/pokemons/{{card.image}}" alt="Bulbasaur" width="150">
+    </span>
+
+    <button ng-click="shuffleCards()">Embaralhar</button>
+</div>
+
+<script src="node_modules/lodash/lodash.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
